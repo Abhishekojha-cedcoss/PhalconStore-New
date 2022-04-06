@@ -1,0 +1,161 @@
+<?php
+$bearer=$this->request->get("bearer");
+
+?>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>Dashboard Template · Bootstrap v5.1</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    main {
+      background-image: url("../../../public/images/images.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+      height: 100vh;
+    }
+
+    #myTable th {
+      color: white;
+    }
+
+    label {
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="<?php echo URLROOT ?>assets/css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" id="myInput" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3 text-white btn btn-danger" href="<?php echo URLROOT ?>login/signout">Sign out</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?php echo URLROOT.'admin?bearer='.$bearer?>">
+                <span data-feather="home"></span>
+                Dashboard
+              </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'product/addProduct?bearer='.$bearer?>">
+                <span data-feather="shopping-cart"></span>
+                Add Products
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'product/listProduct?bearer='.$bearer?>">
+                <span data-feather="shopping-cart"></span>
+                See Products
+              </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'order/addOrder?bearer='.$bearer?>">
+                <span data-feather="file"></span>
+                Add Order
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'order/listOrder?bearer='.$bearer?>">
+                <span data-feather="file"></span>
+                List Orders
+              </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'admin/users?bearer='.$bearer?>">
+                <span data-feather="shopping-cart"></span>
+                Users
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'admin/addUser?bearer='.$bearer?>">
+                <span data-feather="shopping-cart"></span>
+                Add User
+              </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'settings?bearer='.$bearer?>">
+                <span data-feather="layers"></span>
+                Settings
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT.'settings/addrole?bearer='.$bearer?>">
+                <span data-feather="layers"></span>
+                Add New Role
+              </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+
+              <label for="Language"><?php echo $this->locale->_("Choose language"); ?>
+                <select id="Language" class="form-control" name="Locale" onchange="myFunction()">
+                  <option selected>Chooose ...</option>
+                  <option value="English"><?php echo $this->locale->_('English'); ?></option>
+                  <option value="Spanish"><?php echo $this->locale->_('Spanish'); ?></option>
+                  <option value="French"><?php echo $this->locale->_('French'); ?></option>
+                </select>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("Language").value;
+          var url = window.location.href + "?Locale=" + x;
+          location.replace(url);
+        }
+      </script>
