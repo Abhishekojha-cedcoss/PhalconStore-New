@@ -25,6 +25,7 @@ $config = new Config([]);
 // Define some absolute path constants to aid in locating resources
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
+
 //URLROOT (Dynamic links)
 define('URLROOT', 'http://localhost:8080/');
 
